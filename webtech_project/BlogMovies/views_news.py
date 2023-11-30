@@ -23,7 +23,7 @@ def pageDisplay(request):
         'name': 'WEBTECH',
         'username': username,
     }
-    return render(request, 'blog/news_list.html', context)
+    return render(request, 'BlogMovies/news_list.html', context)
     #template = loader.get_template('blog/article_list.html')
     #return HttpResponse(template.render({}, request))
     
@@ -40,7 +40,7 @@ def detailDisplay(request):
         #article = Post.objects.get(id = article_id)
         article = get_object_or_404(Post, id = article_id)
         
-    return render (request, 'blog/news_detailPage.html', {'article':article})
+    return render (request, 'BlogMovies/news_detailPage.html', {'article':article})
     
 def form_comment(request):
     print(request.POST)
@@ -74,7 +74,7 @@ def search_view(request):
     else:
         results = Post.objects.all()
 
-    return render(request, 'blog/search_results.html', {'results': results, 'query': query})
+    return render(request, 'BlogMovies/search_results.html', {'results': results, 'query': query})
 
 
 
@@ -108,7 +108,7 @@ def login_view(request):
                 return redirect('blog_page')  # Remplacez 'pageDisplay' par le nom de votre vue
     else:
         form = UserLoginForm()
-    return render(request, 'blog/your_login_template.html', {'form': form})
+    return render(request, 'BlogMovies/your_login_template.html', {'form': form})
 
 # views.py
 
@@ -125,7 +125,7 @@ def register_view(request):
     else:
         form = UserRegistrationForm()
 
-    return render(request, 'blog/your_register_template.html', {'form': form})
+    return render(request, 'BlogMovies/your_register_template.html', {'form': form})
 
 
 #drf
