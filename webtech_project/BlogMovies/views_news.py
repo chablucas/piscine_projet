@@ -128,4 +128,13 @@ def register_view(request):
     return render(request, 'BlogMovies/your_register_template.html', {'form': form})
 
 
-#drf
+# views.py
+# views.py
+from rest_framework import viewsets
+from .models import Post
+from .serializers import PostSerializer
+
+class PostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
