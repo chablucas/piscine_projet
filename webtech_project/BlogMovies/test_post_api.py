@@ -1,5 +1,12 @@
+import os
+from django import setup
+
+# Spécifiez le chemin complet vers le fichier manage.py
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'webtech_project.settings')
+setup()
+
 import requests
-from models import Post  # Assurez-vous de remplacer 'myapp' par le nom réel de votre application Django
+from models import Post  
 
 # Définissez la fonction de création de post
 def creer_post(author, date, title, content, imdb_id):
