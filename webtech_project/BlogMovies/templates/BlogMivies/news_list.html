@@ -1,0 +1,25 @@
+{% extends "base.html"%}
+
+{% block content %}
+{% if user.is_authenticated %}
+  <p>Bonjour "{{ username }}"</p>
+  <form action="{% url 'logout' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Se déconnecter</button>
+  </form>
+{% endif %}
+<ul>
+  {% if article %} 
+    {% for article in article %}
+      <li><a href="">{{article}}</a></li>
+    {% endfor %} {% else %}
+    <p>Pas d'article</p>
+  {% endif %}
+</ul>
+
+{% endblock %} 
+
+{% block footer %} 
+  
+{% endblock %}
+  

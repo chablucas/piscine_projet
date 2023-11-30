@@ -1,0 +1,20 @@
+<!-- templates/blog/search_results.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<br>
+<a href="{% url 'blog_page' %}">Return Home</a>
+<br> 
+<br>
+    <h1>Résultats de la recherche pour "{{ query }}":</h1>
+<br>
+    {% if results %}
+        <ul>
+            {% for post in results %}
+                <li>{{ post.title }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucun résultat trouvé.</p>
+    {% endif %}
+{% endblock %}

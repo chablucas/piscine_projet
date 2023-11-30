@@ -1,14 +1,22 @@
-from django import forms
-from .models import Post
+# forms.py
 
-class CommentForm(forms.Form):
-    title = forms.CharField(max_length=90)
-    author = forms.CharField(max_length=90)
-    content = forms.CharField(widget=forms.Textarea)
-    date = forms.DateTimeField(widget=forms.DateTimeInput(attrs={'type': 'datetime-local'}))
-    active = forms.ChoiceField(required=False, widget=forms.CheckboxInput)
-    
-class CommentModelForm(forms.ModelForm):
+from django import forms
+from django.contrib.auth.forms import AuthenticationForm
+
+class UserLoginForm(AuthenticationForm):
+    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password'}))
+
+
+# forms.py
+
+from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+
+class UserRegistrationForm(UserCreationForm):
+    email = forms.EmailField(max_length=254, help_text='Required. Enter a valid email address.')
+
     class Meta:
-        model = Post
-        fields = ['title', 'author', 'content', 'date', 'active']
+        model = User
+        fields = ['username', 'email', 'password1', 'password2']
