@@ -93,7 +93,7 @@ def user_login(request):
 
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
-from blog.forms import UserLoginForm
+from BlogMovies.forms import UserLoginForm
 
 def login_view(request):
     if request.method == 'POST':
