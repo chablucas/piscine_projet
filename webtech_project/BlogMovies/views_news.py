@@ -128,13 +128,10 @@ def register_view(request):
     return render(request, 'BlogMovies/your_register_template.html', {'form': form})
 
 
-# views.py
-# views.py
-from rest_framework import viewsets
-from .models import Post
-from .serializers import PostSerializer
+from django.contrib.auth import logout
+from django.shortcuts import render, redirect
 
-class PostViewSet(viewsets.ModelViewSet):
-    queryset = Post.objects.all()
-    serializer_class = PostSerializer
+def custom_logout(request):
+    logout(request)
+    return render(request, 'BlogMovies/logout.html')
 
