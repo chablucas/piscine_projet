@@ -135,3 +135,10 @@ def custom_logout(request):
     logout(request)
     return render(request, 'BlogMovies/logout.html')
 
+
+from django.shortcuts import render, get_object_or_404
+from .models import Post
+
+def post_details(request, parameter_value):
+    post = get_object_or_404(Post, title=parameter_value)  # Utilisez le champ que vous souhaitez (title, author, etc.)
+    return render(request, 'BlogMovies/detail_movies.html', {'post': post})
