@@ -11,9 +11,9 @@ from .forms import UserRegistrationForm, UserLoginForm
 # Create your views here.
 #request => response
 
-def pageDisplay(request):
+def page_display(request):
     title = 'Movies Blog'
-    article = Post.objects.all()[:30]
+    article = Post.objects.all()[:40]
     username = request.user.username if request.user.is_authenticated else None
     context = {
         'article': article,
@@ -21,7 +21,7 @@ def pageDisplay(request):
         'name': 'WEBTECH',
         'username': username,
     }
-    return render(request, 'BlogMovies/news_list.html', context)
+    return render(request, 'BlogMovies/home_page.html', context)
     #template = loader.get_template('blog/article_list.html')
     #return HttpResponse(template.render({}, request))
 
