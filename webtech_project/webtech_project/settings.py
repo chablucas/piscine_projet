@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
     'BlogMovies',
     'Login',
 ]
@@ -120,7 +121,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    # Mettez le chemin correct vers le répertoire 'static' existant
+    os.path.join(BASE_DIR, 'static'),
 ]
 
 # Default primary key field type
