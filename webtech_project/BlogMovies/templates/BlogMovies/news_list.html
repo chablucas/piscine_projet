@@ -2,16 +2,12 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-  <p>Bonjour "{{ username }}"</p>
-  <form action="{% url 'logout' %}" method="post">
-    {% csrf_token %}
-    <button type="submit">Se déconnecter</button>
-  </form>
+  <p>Bonjour "{{ username }}"</p> 
 {% endif %}
 <ul>
   {% if article %} 
     {% for article in article %}
-      <li><a href="{% url 'post_details' parameter_value=post.title %}"></a></li>
+      <li><a href="">{{article}}</a></li>
     {% endfor %} {% else %}
     <p>Pas d'article</p>
   {% endif %}

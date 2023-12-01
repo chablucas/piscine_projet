@@ -46,7 +46,10 @@
                             </li>
                         {% else %}
                             <h4>Welcome {{ user }}</h4>
-                            
+                            <form action="{% url 'logout' %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit">Se déconnecter</button>
+                              </form>
                         {% endif %}
                     </ul>
                     
