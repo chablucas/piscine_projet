@@ -50,13 +50,12 @@ def form_comment(request):
         Post.objects.create(title = request.POST.get('title'), author = request.POST.get('author'))
     return render (request, 'blog/comment-form.html')
 
-
-
-# views.py
 # views.py
 from django.shortcuts import render
 from .models import Post
 from django.db.models import Q
+
+
 
 def search_view(request):
     query = request.GET.get('q', '')
@@ -78,18 +77,6 @@ def search_view(request):
 
 
 
-
-def user_login(request):
-    username = request.POST["username"]
-    password = request.POST["password"]
-    user = authenticate(request, username=username, password=password)
-    if user is not None:
-        login(request, user)
-        # Redirect to a success page.
-        ...
-    else:
-        # Return an 'invalid login' error message.
-        ...
 
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect

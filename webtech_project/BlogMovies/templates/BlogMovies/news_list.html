@@ -11,7 +11,7 @@
 <ul>
   {% if article %} 
     {% for article in article %}
-      <li><a href="">{{article}}</a></li>
+      <li><a href="{% url 'post_details' parameter_value=post.title %}"></a></li>
     {% endfor %} {% else %}
     <p>Pas d'article</p>
   {% endif %}
