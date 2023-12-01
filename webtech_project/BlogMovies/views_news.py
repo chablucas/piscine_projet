@@ -1,14 +1,12 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound
 from django.views import View
-from .models import Post
 from django.template import loader
-from django.shortcuts import render
-from django.http import HttpResponseNotFound
-from django.shortcuts import get_object_or_404
-from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.db.models import Q
+from .models import Post
+from .forms import UserRegistrationForm, UserLoginForm
 
 # Create your views here.
 #request => response
@@ -51,13 +49,6 @@ def form_comment(request):
     return render (request, 'blog/comment-form.html')
 
 
-
-# views.py
-# views.py
-from django.shortcuts import render
-from .models import Post
-from django.db.models import Q
-
 def search_view(request):
     query = request.GET.get('q', '')
 
@@ -77,8 +68,6 @@ def search_view(request):
     return render(request, 'BlogMovies/search_results.html', {'results': results, 'query': query})
 
 
-
-
 def user_login(request):
     username = request.POST["username"]
     password = request.POST["password"]
@@ -90,10 +79,6 @@ def user_login(request):
     else:
         # Return an 'invalid login' error message.
         ...
-
-from django.contrib.auth import authenticate, login
-from django.shortcuts import render, redirect
-from BlogMovies.forms import UserLoginForm
 
 def login_view(request):
     if request.method == 'POST':
@@ -110,11 +95,6 @@ def login_view(request):
         form = UserLoginForm()
     return render(request, 'BlogMovies/your_login_template.html', {'form': form})
 
-# views.py
-
-from django.shortcuts import render, redirect
-from .forms import UserRegistrationForm
-
 def register_view(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
@@ -127,17 +107,9 @@ def register_view(request):
 
     return render(request, 'BlogMovies/your_register_template.html', {'form': form})
 
-
-from django.contrib.auth import logout
-from django.shortcuts import render, redirect
-
 def custom_logout(request):
     logout(request)
     return render(request, 'BlogMovies/logout.html')
-
-
-from django.shortcuts import render, get_object_or_404
-from .models import Post
 
 def post_details(request, parameter_value):
     post = get_object_or_404(Post, title=parameter_value)  # Utilisez le champ que vous souhaitez (title, author, etc.)
