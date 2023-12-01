@@ -1,8 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-<!-- post_details.html -->
 <h1>{{ post.title }}</h1>
-<p>Auteur : {{ post.author }}</p>
 <p>{{ post.content }}</p>
+<img src="{{ post.poster_path }}" alt="{{ post.title }} Poster">
 <!-- Ajoutez d'autres champs au besoin -->
 {% endblock %}

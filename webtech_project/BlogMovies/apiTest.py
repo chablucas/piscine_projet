@@ -4,10 +4,12 @@ import requests
 from BlogMovies.models import Post
 
 def get_top_100_movies(api_key, access_token):
+    base_url = 'https://image.tmdb.org/t/p/w500'  # URL de base des affiches avec une largeur de 500 pixels
+
     url = 'https://api.themoviedb.org/3/movie/top_rated'
     params = {
         'api_key': api_key,
-        'page': 1
+        'page': 6
     }
 
     response = requests.get(url, params=params)
@@ -27,7 +29,8 @@ def get_top_100_movies(api_key, access_token):
                 post = Post(
                     title=title,
                     date=movie_data.get('release_date'),
-                    # Ajoutez d'autres champs selon les informations que vous souhaitez stocker
+                    content=movie_data.get('overview', 'N/A'),  # Ajout de la description
+                    poster_path=f"{base_url}{movie_data.get('poster_path', 'N/A')}",  # URL complète de l'affiche
                 )
                 post.save()
 

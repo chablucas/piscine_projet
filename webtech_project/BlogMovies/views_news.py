@@ -13,7 +13,7 @@ from .forms import UserRegistrationForm, UserLoginForm
 
 def pageDisplay(request):
     title = 'Movies Blog'
-    article = Post.objects.all()
+    article = Post.objects.all()[:30]
     username = request.user.username if request.user.is_authenticated else None
     context = {
         'article': article,
@@ -24,30 +24,6 @@ def pageDisplay(request):
     return render(request, 'BlogMovies/news_list.html', context)
     #template = loader.get_template('blog/article_list.html')
     #return HttpResponse(template.render({}, request))
-    
-def detailDisplay(request):
-    article = []
-    
-    print(type(request.GET.get('article')))
-    
-    if request.GET.get('article') == '20':
-        return HttpResponseNotFound("Pas d'articles")
-    
-    if request.GET.get('article'):
-        article_id = request.GET.get('article')
-        #article = Post.objects.get(id = article_id)
-        article = get_object_or_404(Post, id = article_id)
-        
-    return render (request, 'BlogMovies/news_detailPage.html', {'article':article})
-    
-def form_comment(request):
-    print(request.POST)
-    print(request.GET)
-    
-    if request.POST:
-        Post.objects.create(title = request.POST.get('title'), author = request.POST.get('author'))
-    return render (request, 'blog/comment-form.html')
-
 
 def search_view(request):
     query = request.GET.get('q', '')

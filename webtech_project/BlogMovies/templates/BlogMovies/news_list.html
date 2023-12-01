@@ -1,15 +1,13 @@
 {% extends "base.html"%}
 
 {% block content %}
-{% if user.is_authenticated %}
-  <p>Bonjour "{{ username }}"</p> 
-{% endif %}
+
 <ul>
   {% if article %} 
     {% for article in article %}
       <li><a href="">{{article}}</a></li>
     {% endfor %} {% else %}
-    <p>Pas d'article</p>
+    <p>No movies found</p>
   {% endif %}
 </ul>
 

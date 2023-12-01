@@ -26,10 +26,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Movies</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/blog/detail">About</a>
+                            <a class="nav-link active" href="/form/formulaire">Form
+                                <span class="visually-hidden">(current)</span>
+                            </a>
                         </li>
                     </ul>
                     <form class="d-flex" method="GET" action="{% url 'search_view' %}">
@@ -51,7 +50,7 @@
                                 <button type="submit">Se déconnecter</button>
                               </form>
                         {% endif %}
-                    </ul>
+                    </ul>   
                     
                 </div>
             </div>
